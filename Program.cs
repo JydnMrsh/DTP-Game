@@ -5,6 +5,16 @@ namespace DTP_Game
 {
     class Program
     {
+
+        public static void lineBreak()
+        {
+            for (int i = 0; i < 106; i++)
+            {
+                Console.Write("=");
+            }
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
             bool repeat = true;
@@ -44,13 +54,13 @@ namespace DTP_Game
 
             Console.WriteLine("Your lifelong dream of working at the recycling plant has come true, you are working at the");
             Console.WriteLine("sorting facility and have to distinguish between if something can be recycled or not.");
-            Console.WriteLine("==========================================================================================================");
+            lineBreak();
 
             do
             {
                 Console.WriteLine("Are you ready to begin work?");
                 Console.WriteLine("Enter y for yes");
-                Console.WriteLine("==========================================================================================================");
+                Console.WriteLine("===================================================================================================================================");
                 string ready = Console.ReadLine();
 
                 // User is ready to begin.
@@ -66,7 +76,7 @@ namespace DTP_Game
             {
                 Random rnd = new Random();
                 int listNum = rnd.Next(1, 3);
-
+                
                 if (listNum == 1)
                 {
                     var random = new Random();
@@ -74,16 +84,16 @@ namespace DTP_Game
 
                     do
                     {
-                        Console.WriteLine("==========================================================================================================");
+                        lineBreak();
                         Console.WriteLine(recyclable[index] + " needs to be sorted, which bin will you put it in?");
                         Console.WriteLine("Type 1 - Recycle bin");
                         Console.WriteLine("Type 2 - Waste bin");
-                        Console.WriteLine("==========================================================================================================");
+                        lineBreak();
                         string answer = Console.ReadLine();
 
                         if (answer == "1")
                         {
-                            Console.WriteLine("==========================================================================================================");
+                            lineBreak();
                             Console.WriteLine("That's correct!");
                             playerScore = playerScore + 1;
                             Console.WriteLine("score: " + playerScore);
@@ -91,7 +101,7 @@ namespace DTP_Game
                         }
                         else if (answer == "2")
                         {
-                            Console.WriteLine("==========================================================================================================");
+                            lineBreak();
                             Console.WriteLine("That's incorrect.");
                             playerScore = playerScore - 1;
                             Console.WriteLine("score: " + playerScore);
@@ -99,7 +109,7 @@ namespace DTP_Game
                         }
                         else
                         {
-                            Console.WriteLine("==========================================================================================================");
+                            lineBreak();
                             Console.WriteLine("Invalid!");
                             invalid = true;
                             continue;
@@ -116,16 +126,16 @@ namespace DTP_Game
                     do
                     {
 
-                        Console.WriteLine("==========================================================================================================");
-                        Console.WriteLine(nonRecyclable[index] +  " needs to be sorted, which bin will you put it in?");
+                        lineBreak();
+                        Console.WriteLine(nonRecyclable[index] + " needs to be sorted, which bin will you put it in?");
                         Console.WriteLine("Type 1 - Recycle bin");
                         Console.WriteLine("Type 2 - Waste bin");
-                        Console.WriteLine("==========================================================================================================");
+                        lineBreak();
                         string answer = Console.ReadLine();
 
                         if (answer == "2")
                         {
-                            Console.WriteLine("==========================================================================================================");
+                            lineBreak();
                             Console.WriteLine("That's correct!");
                             playerScore = playerScore + 1;
                             Console.WriteLine("score: " + playerScore);
@@ -133,7 +143,7 @@ namespace DTP_Game
                         }
                         else if (answer == "1")
                         {
-                            Console.WriteLine("==========================================================================================================");
+                            lineBreak();
                             Console.WriteLine("That's incorrect.");
                             playerScore = playerScore - 1;
                             Console.WriteLine("score: " + playerScore);
@@ -141,7 +151,7 @@ namespace DTP_Game
                         }
                         else
                         {
-                            Console.WriteLine("==========================================================================================================");
+                            lineBreak();
                             Console.WriteLine("Invalid!");
                             invalid = true;
                             continue;
@@ -156,17 +166,18 @@ namespace DTP_Game
                 }
             }
             while (repeat == true);
+            
 
             if (playerScore == -5)
             {
-                Console.WriteLine("==========================================================================================================");
+                lineBreak();
                 Console.WriteLine("Your boss is" +
                     " not happy! You have been putting too many items in the wrong bins and are going to get fired!");
             }
 
             if (playerScore == 10)
             {
-                Console.WriteLine("==========================================================================================================");
+                lineBreak();
                 Console.WriteLine("Congratulations! Your boss is happy with your work and you will be getting extra pay this week.");
             }
         }

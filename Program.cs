@@ -60,7 +60,7 @@ namespace DTP_Game
             {
                 Console.WriteLine("Are you ready to begin work?");
                 Console.WriteLine("Enter y for yes");
-                Console.WriteLine("===================================================================================================================================");
+                lineBreak();
                 string ready = Console.ReadLine();
 
                 // User is ready to begin.

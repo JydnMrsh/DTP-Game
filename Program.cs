@@ -10,8 +10,22 @@ namespace DTP_Game
 
         static int playerScore = 0;
 
-        static List<string> nonRecyclable = new List<string>()
+        static List<string> nonRecyclable = new List<string>();
+        static List<string> recyclable = new List<string>();
+
+        public static void LineBreak()
+        {
+            for (int i = 0; i < 106; i++)
             {
+                Console.Write("=");
+            }
+            Console.WriteLine();
+        }
+
+        public static void initialiseLists()  // Resets the lists
+        {
+                nonRecyclable = new List<string>()
+                {
                 "a used nappie",
                 "some batteries",
                 "a plastic bag",
@@ -24,10 +38,10 @@ namespace DTP_Game
                 "a polystyrene meat tray",
                 "a lightbulb",
                 "some window glass",
-            };
+                };
 
-        static List<string> recyclable = new List<string>()
-            {
+                recyclable = new List<string>()
+                {
                 "a plastic bottle",
                 "a plastic container",
                 "a clear plastic food container",
@@ -38,19 +52,18 @@ namespace DTP_Game
                 "some cardboard",
                 "an egg carton",
                 "an opened envolope",
-            };
-
-        public static void LineBreak()
-        {
-            for (int i = 0; i < 106; i++)
-            {
-                Console.Write("=");
-            }
-            Console.WriteLine();
+                };
         }
 
         public static void ListPicker(List<string> list) // Takes whatever list is randomly chosen and chooses a random object from that list and asks a question with it and checks the users answer.
         {
+            // If the list runs out of objects, then it resets the list.
+            if (list.Count < 2)
+            {
+                initialiseLists();
+                return;
+            }
+
             var random = new Random();
             int index = random.Next(list.Count);
 
@@ -58,6 +71,7 @@ namespace DTP_Game
             {
                 LineBreak();
                 Console.WriteLine(list[index] + " needs to be sorted, which bin will you put it in?");
+                list.RemoveAt(index); // Removes the current object out of the list so the same object (quesiton) won't be used multiple times in a row.
                 Console.WriteLine("Type 1 - Recycle bin");
                 Console.WriteLine("Type 2 - Waste bin");
                 LineBreak();
@@ -95,6 +109,8 @@ namespace DTP_Game
 
         static void Main(string[] args)
         {
+            initialiseLists();
+
             bool repeat = true;
 
             Console.WriteLine("Your lifelong dream of working at the recycling plant has come true, you are working at the");
